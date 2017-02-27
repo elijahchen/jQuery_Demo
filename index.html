@@ -9,11 +9,12 @@
 
 <h1>jQuery Demo</h1>
 <script>
-    ("h1").css({
+    var styles = {
         color: "red",
         background: "pink",
         border: "2px solid purple"
-    });
+    };
+    $("h1").css(styles);
 </script>
 
 
@@ -43,7 +44,7 @@
     $("div").css("background","purple");
     $(".highlight").css("width","200px");
     $("#third").css("border","3px solid orange");
-    $("div:first").css("color","pink");
+    $("div:first-of-type").css("color","pink");
 </script>
 
 </body>
