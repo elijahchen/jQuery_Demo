@@ -4,17 +4,88 @@
     <meta charset="UTF-8">
     <title>jQuery Methods</title>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+    <style type="text/css">
+        .correct {
+            color: green;
+        }
+        .wrong {
+            color: red;
+            background: pink;
+        }
+        .done {
+            color: gray;
+            text-decoration: line-through;
+        }
+    </style>
 </head>
 <body>
 
 <h1>jQuery Methods Demo Page</h1>
-<input type="text" placeholder="Your Name">
+<h2>jQuery Methods Demo Page</h2>
+
+<input type="text" placeholder="Hit Enter to change H2">
+
+<select>
+    <option>Red</option>
+    <option>Green</option>
+    <option>Blue</option>
+</select>
+
+<button class="buttonRow">Don't Click Me!</button>
+<button class="buttonRow">Seriously Don't Click Me!</button>
+<button class="buttonRow">This is your last warning!</button>
+
+<div>
+    <button id="submit">Change H1</button>
+</div>
 
 <ul>
-    <li>Skittles</li>
+    <li class="done">Skittles</li>
     <li>Starburst</li>
     <li>Twix</li>
 </ul>
+
+<img src="http://www.stjameshospital.com/site1/wp-content/uploads/2011/08/Eyelid-Surgery.jpg" height="200px">
+<img src="http://www.stjameshospital.com/site1/wp-content/uploads/2011/08/Eyelid-Surgery.jpg" height="200px">
+<img src="http://www.stjameshospital.com/site1/wp-content/uploads/2011/08/Eyelid-Surgery.jpg" height="200px">
+
+<script>
+    $("li:first-of-type").toggleClass("done");
+
+    $("img:first").attr("src", "http://www.gnet.org/wp-content/uploads/o-CLOSED-EYES-facebook.jpg");
+    $("img").last().attr("src", "https://i.ytimg.com/vi/GMGSw3GDyJQ/maxresdefault.jpg");
+
+    $("h1").click(function(){
+        $(this).css("color", "orange");
+    });
+
+    $(".buttonRow").click(function(){
+        $(this).toggleClass("wrong");
+        var text = $(this).text();
+        console.log("You clicked: " + text);
+    });
+
+    $(".buttonRow").on("mouseenter", function(){
+        $(this).css("font-weight", "bold");
+    })
+
+    $(".buttonRow").on("mouseleave", function(){
+        $(this).css("font-weight", "normal");
+    })
+
+    $("#submit").click(function(){
+        var text = $("input[type = text]").val();
+        $("h1").text(text);
+    })
+
+    $("input[type = text]").keypress(function(event){
+       if(event.which === 13){
+           var text = $("input").val();
+           $("h2").text(text);
+           $("input").val("");
+       }
+    });
+</script>
 
 </body>
 </html>
